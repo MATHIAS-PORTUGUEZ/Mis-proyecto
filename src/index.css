@@ -1,0 +1,306 @@
+:root {
+    --primary-color: #a5a5a5;
+    --secondary-color: #fae3e3;
+    --accent-color: #ff6b6b;
+    --text-color: #ffffff;
+    --text-secondary: #f0f0f0;
+    --background-overlay: rgba(0, 0, 0, 0.75);
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-strong: 0 12px 40px rgba(0, 0, 0, 0.5);
+    --border-radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('/assets/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-color);
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+
+
+/* Contenedores principales con mejor diseño */
+.login-container,
+.register-container,
+.reservations-page {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-strong);
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.reservations-page {
+    max-width: 900px;
+    padding: 2rem;
+}
+
+/* Efecto de brillo sutil en contenedores */
+.login-container::before,
+.register-container::before,
+.reservations-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.05),
+            transparent);
+    transition: var(--transition);
+}
+
+.login-container:hover::before,
+.register-container:hover::before {
+    left: 100%;
+}
+
+/* Títulos y textos mejorados */
+h1,
+h2,
+h3 {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(5, 5, 5, 0.5);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--accent-color);
+}
+
+/* Inputs y elementos de formulario elegantes */
+input,
+textarea,
+select {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    color: var(--text-color);
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.2);
+    transform: translateY(-2px);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+/* Botones elegantes */
+button {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border: none;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    color: var(--text-color);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(204, 0, 0, 0.4);
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+/* Tarjetas de reservación mejoradas */
+.reservation-card {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+.reservation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-strong);
+    border-color: var(--accent-color);
+}
+
+.no-reservations {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius);
+    padding: 3rem 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    box-shadow: var(--shadow-soft);
+}
+
+/* Enlaces mejorados */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+a:hover {
+    color: var(--text-color);
+    text-shadow: 0 0 8px var(--accent-color);
+}
+
+/* Ajustes responsivos mejorados */
+@media (max-width: 1200px) {
+
+    body::before,
+    body::after {
+        width: 10%;
+    }
+
+    #root {
+        margin: 0 10%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    body::before,
+    body::after {
+        width: 5%;
+    }
+
+    #root {
+        margin: 0 5%;
+    }
+
+    .login-container,
+    .register-container {
+        max-width: 400px;
+        padding: 2rem 1.5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    body::before,
+    body::after {
+        display: none;
+    }
+
+    #root {
+        margin: 0;
+        padding: 1rem;
+    }
+
+    .login-container,
+    .register-container,
+    .reservations-page {
+        padding: 1.5rem 1rem;
+        margin: 1rem auto;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    button {
+        padding: 0.875rem 1.5rem;
+    }
+}
+
+/* Animaciones suaves para carga */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.login-container,
+.register-container,
+.reservations-page {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(254, 251, 251, 0.981);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}

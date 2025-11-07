@@ -1,0 +1,315 @@
+.reservations-page {
+    min-height: 100vh;
+    background-color: #000000;
+    padding: 2rem;
+    color: rgb(3, 3, 3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Remove the decorative/shine pseudo-element from the global container
+   that was creating an extra rounded rectangle in the header area. */
+.reservations-page::before,
+.reservations-page::after {
+    display: none !important;
+    content: none !important;
+}
+
+.reservations-container {
+    width: 100%;
+    max-width: 600px;
+    /* Reducido para mejor centrado */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+.reservations-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+}
+
+.no-reservations {
+    width: 100%;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+/* Form styles matching the mockup: light panel with black input bars */
+.form-area {
+    background: #161515; /* light gray panel */
+    color: #111;
+    padding: 2rem;
+    border-radius: 2px;
+}
+
+.res-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+
+.res-form label { font-size: 0.9rem; color: #bfbfbf; display:block; margin-bottom:6px }
+.res-form input,
+.res-form textarea {
+    background: rgba(255,255,255,0.03);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.06);
+    height: 44px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    transition: box-shadow .18s ease, border-color .18s ease;
+}
+
+/* Estilo para el select de personas: consistente con inputs y más visual */
+.personas-select {
+    background: rgba(255,255,255,0.03);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.06);
+    height: 44px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: box-shadow .18s ease, border-color .18s ease;
+    width: 100%;
+}
+.personas-select:focus { outline: none; box-shadow: 0 6px 20px rgba(0,0,0,0.6); border-color: rgba(255,255,255,0.12) }
+/* añadir una flecha nativa más visible en móviles si se desea */
+.personas-select option { color: #000; }
+
+.res-form textarea { height: 92px; resize: vertical; padding-top: 10px }
+.res-form input::placeholder, .res-form textarea::placeholder { color: rgba(255,255,255,0.45) }
+.res-form input:focus, .res-form textarea:focus { outline: none; box-shadow: 0 6px 20px rgba(0,0,0,0.6); border-color: rgba(255,255,255,0.12) }
+
+/* Make specific fields' text color white (fecha, hora, personas, notas) */
+input[name="fecha"],
+input[name="hora"],
+input[name="personas"],
+textarea[name="notas"] {
+    color: #ffffff;
+}
+
+.row { display:flex; gap:12px }
+.col { flex:1 }
+
+.actions { display:flex; gap:12px; margin-top:12px }
+.btn-reservar, .btn-limpiar {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+}
+.btn-reservar { background: linear-gradient(90deg, #2ecc71, #22a95b); color: #04120a }
+.btn-reservar:hover { transform: translateY(-2px) }
+.btn-limpiar { background: linear-gradient(90deg, #ff4d4d, #e63946); color: #fff }
+.btn-limpiar:hover { transform: translateY(-2px) }
+
+.saved-title { width:100%; background:#000; color:#fff; padding:12px; margin-top:12px }
+
+.reservations-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.reservation-card {
+    width: 100%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    align-items: flex-start;
+    transition: transform 0.18s ease, box-shadow .18s ease;
+}
+
+.reservation-card:hover {
+    transform: translateY(-2px);
+}
+
+.reservation-info {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.reservation-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.reservation-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 0;
+}
+
+.reservation-details p {
+    margin: 0;
+    font-size: 1rem;
+    color: #d7d7d7;
+    text-align: left;
+}
+
+.reservation-details span {
+    color: #ffffff;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.btn-borrar {
+    background: linear-gradient(90deg, #ff6b6b, #ff4d4d);
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .2s ease;
+    font-weight: 700;
+    min-width: 100px;
+}
+
+.btn-borrar:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(90deg, #ff4d4d, #ff3333);
+    box-shadow: 0 4px 12px rgba(255, 77, 77, 0.3);
+}
+
+.card-actions { display:flex; align-items:center }
+
+.field-error { color: #fd4040; font-size: 0.85rem; margin-top:2px }
+
+.form-notice { margin-top:12px; color: #b9f6c1; font-weight:600 }
+
+/* New responsive grid layout */
+.reservations-panel { width:100%; max-width:1100px }
+.reservations-grid { display:grid; grid-template-columns: 1fr 420px; gap:28px }
+.form-panel { background: transparent }
+.list-panel { background: transparent }
+
+.reservations-footer { margin-top:18px; color: #bdbdbd; font-size: 0.95rem }
+
+@media (max-width: 980px) {
+    .reservations-grid { grid-template-columns: 1fr; }
+    .reservation-card { flex-direction: column; align-items: stretch }
+    .card-actions { justify-content: flex-end }
+}
+
+@media (max-width: 768px) {
+    .reservations-page {
+        padding: 1rem;
+    }
+
+    .reservations-container {
+        padding: 1rem;
+    }
+}
+
+
+/* Counter control for personas */
+.personas-control { display:flex; flex-direction:column; gap:6px; align-items:center; }
+.personas-counter { display:flex; align-items:center; justify-content:center; gap:12px; }
+
+/* display */
+.personas-display {
+    text-align:center;
+    width:72px;
+    height:44px;
+    background: rgba(255,255,255,0.02);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 10px 6px;
+}
+
+/* buttons - mejor centrados y tamaño táctil */
+.personas-btn {
+    width:44px;
+    height:44px;
+    border-radius:8px;
+    border:none;
+    cursor:pointer;
+    font-size:20px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition: transform .12s ease, opacity .12s ease;
+}
+.personas-decr { background: linear-gradient(90deg,#ff6b6b,#ff4d4d); color:#fff }
+.personas-incr { background: linear-gradient(90deg,#2ecc71,#22a95b); color:#04120a }
+
+/* estado disabled/opaco cuando llega al límite */
+.personas-btn:disabled,
+.personas-btn[disabled] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    filter: grayscale(0.15);
+    pointer-events: none;
+}
+
+/* focus/hover */
+.personas-btn:focus { outline: 2px solid rgba(255,255,255,0.12) }
+.personas-btn:hover { transform: translateY(-2px) }
+
+/* ensure consistent width on small screens */
+@media (max-width: 480px) {
+    .personas-display { width:56px }
+    .personas-btn { width:40px; height:40px }
+}
+
+/* Estilo para el selector de hora: consistente y legible + flecha */
+.time-select {
+    background: rgba(255,255,255,0.03);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.06);
+    height: 44px;
+    padding: 10px 12px;
+    padding-right: 40px; /* espacio para la flecha */
+    border-radius: 8px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    transition: box-shadow .18s ease, border-color .18s ease, background .12s ease;
+    width: 100%;
+    font-size: 1rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath fill='%23ffffff' fill-opacity='0.85' d='M7 9L0 0h14z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+.time-select:focus { outline: none; box-shadow: 0 6px 20px rgba(0,0,0,0.6); border-color: rgba(255,255,255,0.12) }
+
+/* placeholder option style */
+.time-select option[disabled] {
+    color: rgba(255,255,255,0.65);
+}
+
+/* make selected option more readable on some browsers */
+.time-select option {
+    color: #111;
+}
